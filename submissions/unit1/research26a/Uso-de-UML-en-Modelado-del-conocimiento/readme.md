@@ -1,4 +1,3 @@
-
 # Ingeniería del Conocimiento (TIC-1015)
 ## Investigación Individual
 
@@ -208,8 +207,95 @@ flowchart TD
 
  - *Diseñar* sistemas expertos mostrando reglas y relaciones mediante diagramas de clases.
 
+### 4.6.1. Diagrama adicional: Sistema de gestión de biblioteca universitaria
+
+<p align="center">Diagrama de clases para biblioteca</p>
+
+```mermaid
+classDiagram
+    class Usuario {
+        +id_usuario
+        +nombre
+        +tipo
+        +prestar_libro()
+        +devolver_libro()
+    }
+
+    class Libro {
+        +isbn
+        +titulo
+        +autor
+        +editorial
+        +año
+        +disponibilidad
+    }
+
+    class Prestamo {
+        +id_prestamo
+        +fecha_prestamo
+        +fecha_devolucion
+        +estado
+    }
+
+    class Multa {
+        +id_multa
+        +monto
+        +motivo
+        +pagada
+    }
+
+    Usuario "1" -- "*" Prestamo : realiza
+    Libro "1" -- "*" Prestamo : se presta en
+    Prestamo "1" -- "0..*" Multa : puede generar
+
+    style Usuario fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    style Libro fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    style Prestamo fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    style Multa fill:#ffebee,stroke:#c62828,stroke-width:2px
+```
+
+*Diagrama editado por: Ramon Contreras*
+
 ---
 
+### 4.6.2. Diagrama adicional: Proceso de adquisición de conocimiento en sistema experto
+
+<p align="center">Ciclo de adquisición y refinamiento del conocimiento</p>
+
+```mermaid
+graph TD
+    A[Inicio: Identificar dominio] --> B[Entrevistar expertos]
+    B --> C[Extraer conocimiento tácito]
+    C --> D[Formalizar reglas y conceptos]
+    D --> E{¿Conocimiento completo?}
+    
+    E -- No --> F[Validar con expertos]
+    F --> G{¿Es correcto?}
+    G -- No --> H[Refinar conocimiento]
+    H --> B
+    G -- Sí --> I[Integrar a base de conocimiento]
+    
+    E -- Sí --> I
+    I --> J[Implementar en sistema]
+    J --> K[Probar y evaluar]
+    K --> L{¿Resultados satisfactorios?}
+    
+    L -- No --> M[Identificar deficiencias]
+    M --> B
+    L -- Sí --> N[Mantenimiento y actualización]
+    
+    N --> O[Fin del ciclo]
+    
+    style A fill:#c8e6c9,stroke:#388e3c,stroke-width:2px
+    style D fill:#fff9c4,stroke:#f9a825,stroke-width:2px
+    style I fill:#bbdefb,stroke:#1976d2,stroke-width:2px
+    style J fill:#f8bbd0,stroke:#c2185b,stroke-width:2px
+    style O fill:#c8e6c9,stroke:#388e3c,stroke-width:2px
+```
+
+*Diagrama editado por: Ramon Contreras*
+
+---
 
 ## 5. Análisis y discusión
 
@@ -276,11 +362,11 @@ De esta manera, el repositorio se fortalece como un espacio colaborativo que fom
 
 ## 8. Referencias
 
-- UML. (s. f.). Lucidchart. Recuperado 10 de febrero de 2026, de https://www.lucidchart.com/pages/es/que-es-el-lenguaje-unificado-de-modelado-uml?
+- UML. (s. f.). Lucidchart. Recuperado 10 de febrero de 2026, de https://www.lucidchart.com/pages/es/que-es-el-lenguaje-unificado-de-modelado-uml?
 
 - TecnoDigital. (2025, 9 febrero). Guía completa sobre el Lenguaje Unificado de Modelado UML. Informática y Tecnología Digital. https://informatecdigital.com/que-es-el-lenguaje-unificado-de-modelado-uml/
 
-- Modelado del conocimiento _ AcademiaLab. (s. f.). https://academia-lab.com/enciclopedia/modelado-del-conocimiento
+- Modelado del conocimiento _ AcademiaLab. (s. f.). https://academia-lab.com/enciclopedia/modelado-del-conocimiento
 
 - Del Rocío Ramírez Jiménez, M., Hernández, K. P., Orozco, C. E. R., Torres, N. A. G., Zúñiga, L. S., & Torres, L. M. O. (2024). UML: Una manera de representar, interpretar, analizar y desarrollar el pensamiento computacional. RIDE Revista Iberoamericana Para la Investigación y el Desarrollo Educativo, 15(29). https://doi.org/10.23913/ride.v15i29.2196
 
